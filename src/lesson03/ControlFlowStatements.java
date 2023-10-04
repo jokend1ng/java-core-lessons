@@ -26,7 +26,8 @@ public class ControlFlowStatements {
         double maxTemperatureValue = 1000;
         double currentTemperatureValue = 200.5;
         if (currentTemperatureValue > maxTemperatureValue) { // false
-            System.out.println("Предупреждение: Превышено максимальное значение"); // игнорируется
+            System.out.println("Предупреждение: " +
+                    "Превышено максимальное значение"); // игнорируется
         }
 
         int maxScoreValue = 100;
@@ -34,7 +35,8 @@ public class ControlFlowStatements {
         if (currentScoreValue == maxScoreValue) { // false
             System.out.println("Вы набрали достаточное количество очков"); // игнорируется
         } else {
-            System.out.println("Вы не успели набрать достаточное количество очков. Попробуйте еще раз"); // выполняется
+            System.out.println("Вы не успели набрать достаточное " +
+                    "количество очков. Попробуйте еще раз"); // выполняется
         }
 
         char currentChar = 'a';
@@ -51,27 +53,43 @@ public class ControlFlowStatements {
         if (requestResult) System.out.println("Запрос успешно обработан");
         else System.out.println("Обработка запроса завершилась неудачей");
 
+        // if (requestResult/* == true*/) System.out.println("Запрос успешно обработан");
+        // if (!requestResult/* == false*/) System.out.println("Запрос успешно обработан");
+
         // В чём разница?
-        currentChar = 'с';
+        currentChar = 'a';
         if (currentChar == 'a' || currentChar == 'z') {
             System.out.println("Ваша роль - пользователь");
         } else if (currentChar == 'x') {
             System.out.println("Ваша роль - администратор");
         }
 
-        currentChar = 'с';
+        /*
+        currentChar = 'a';
         if (currentChar == 'a' || currentChar == 'z') {
             System.out.println("Ваша роль - пользователь");
         }
         if (currentChar == 'x') {
             System.out.println("Ваша роль - администратор");
         }
+        */
 
         // TODO #3
         // TODO #4
+        //  Решите следующую задачу, используя if else:
+        //  Даны 3 числа, вывести в консоль наибольшее из них
+        int num01 = 90, num02 = 8, num03 = -12;
+        if (num01 > num02 && num01 > num03) System.out.println(num01);
+        else if (num02 > num01 && num02 > num03) System.out.println(num02);
+        else System.out.println(num03);
 
         // I. SWITCH CASE
-        // работает только с int (Integer), byte (Byte), short (Short), char (Character), enum, String
+        // работает только с int (Integer),
+        // byte (Byte),
+        // short (Short),
+        // char (Character),
+        // enum,
+        // String
         // выполняется от первого совпадения до первого break
         int monthNumber = 4;
         switch (monthNumber) {
@@ -122,7 +140,7 @@ public class ControlFlowStatements {
         seasonLetter = switch(monthNumber) {
             case 12, 1, 2 -> {
                 System.out.println("Зима");
-                yield  'з';
+                yield 'з';
             }
             case 3, 4, 5 -> {
                 System.out.println("Весна");
@@ -144,7 +162,12 @@ public class ControlFlowStatements {
         System.out.println(seasonLetter);
 
         // TODO #5
-        // TODO #6
+        //  Решите следующую задачу, используя switch:
+        //  Напишите программу, которая выводит в консоль количество квартир на выбранном этаже.
+        //  1 и 2 этажи - 7 квартир
+        //  3 и 4 этажи - 5 квартир
+        //  5 этаж - 2 квартиры
+        //  Номер этажа хранится в переменной floorNumber.
 
     }
 }
