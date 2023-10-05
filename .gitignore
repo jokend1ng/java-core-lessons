@@ -1,5 +1,6 @@
 ### IntelliJ IDEA ###
 out/
+!**/src/**/TODO.java
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea
