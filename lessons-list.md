@@ -25,3 +25,9 @@
 [Теория](src/lesson03/pdf)
 [Домашнее задание](src/lesson03/task)
 
+## Занятие #4.
+1. Цикл WHILE.
+2. Цикл DO WHILE.
+3. Цикл FOR.
+[Код](src/lesson04)
+[Домашнее задание](src/lesson04/task)
