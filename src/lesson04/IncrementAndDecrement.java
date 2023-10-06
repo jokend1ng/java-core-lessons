@@ -27,5 +27,6 @@ public class IncrementAndDecrement {
         int b = 1;
         int result = b++ + ++b - b++ - b-- + ++b;
         System.out.println(result);
+        // 1 + 3 - 3 - 4 + 4
     }
 }

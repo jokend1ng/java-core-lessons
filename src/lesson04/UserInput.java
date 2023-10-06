@@ -9,11 +9,11 @@ public class UserInput {
         // Необходим импорт: import java.util.Scanner;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введите целое число");
-        int intValue = scanner.nextInt();
+        /*System.out.println("Введите целое число");
+        int intValue = scanner.nextInt(); // 34.6 34htj
 
         System.out.println("Введите целое число (в диапазоне byte)");
-        byte byteValue = scanner.nextByte();
+        byte byteValue = scanner.nextByte(); // 345
 
         System.out.println("Введите число с плавающей точкой");
         double doubleValue = scanner.nextDouble();
@@ -24,7 +24,7 @@ public class UserInput {
         System.out.println(intValue);
         System.out.println(byteValue);
         System.out.println(doubleValue);
-        System.out.println(booleanValue);
+        System.out.println(booleanValue);*/
 
 
         // При вводе неверного типа,
@@ -49,7 +49,6 @@ public class UserInput {
         System.out.println("Введите любые данные");
         var input = scanner.next(); // строка (тип String)
         System.out.println(input);
-
 
     }
 }
