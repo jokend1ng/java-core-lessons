@@ -80,44 +80,6 @@ public class ArraysLesson {
             }
         }
 
-        // Многомерные массивы
-        int[][] field = {
-                {1, 0, 0},
-                {1, 3, 2, 0},
-        };
-        System.out.println(field[1][3]); // 0
-        System.out.println(field[0][0]); // 1
-
-        int[][] matrix = new int[3][3]; // [[0,0,0],[0,0,0],[0,0,0]]
-        matrix[0][0] = 10;
-        matrix[1][0] = 100;
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = (int) (Math.random() * 1000);
-            }
-        }
-
-        char[][] animals = new char[3][]; // [null, null, null]
-        // [
-        //  ['\u0000', '\u0000'],
-        //  null,
-        //  null
-        // ]
-        animals[0] = new char[2];
-        // [
-        //  ['\u0000', '\u0000'],
-        //  ['\u0000', '\u0000', '\u0000'],
-        //  null
-        // ]
-        animals[1] = new char[3];
-        // [
-        //  ['\u0000', '\u0000'],
-        //  ['\u0000', '\u0000', '\u0000'],
-        //  ['\u0000', '\u0000', '\u0000', '\u0000']
-        // ]
-        animals[2] = new char[4];
-
         // Класс Arrays содержит методы для работы с массивами
         // Необходим импорт: import java.util.Arrays
         int[] ids = {2, 5, 7, 8, 9, 12, 44, 67};
@@ -171,19 +133,36 @@ public class ArraysLesson {
 
         // TODO #1
         // Дан отсортированный массив целых чисел. Найти максимальный элемент
-        int[] task01 = {4, 6, 89, 90, 22, 56, 78};
+        int[] task01 = {4, 6, 89, 90, 220, 560, 780};
+        System.out.println(task01[task01.length-1]);
 
         // TODO #2
         // Дан отсортированный массив положительных целых чисел task02.
         // Найти в данном массиве такие два числа (одну пару), чтобы их сумма была равна targetSum.
         int[] task02 = {1, 3, 7, 8, 9, 10, 13};
         int targetSum = 10;
-
-        // TODO #3
-        // Найти минимальную длину подмассива для task03,
-        // сумма элементов которого больше или равна task03Sum
-        int[] task03 = {300, 630, 136, 440, 1200, 55, 947, 390, 780, 250};
-        int task03Sum = 2000;
-
+        // вложенный цикл
+        out: for (int i = 0; i < task02.length; i++) {
+            for (int j = i + 1; j < task02.length; j++) {
+                if (task02[i] + task02[j] == targetSum) {
+                    System.out.println(task02[i]);
+                    System.out.println(task02[j]);
+                    break out;
+                }
+            }
+        }
+        // два указателя
+        int low = 0;
+        int high = task02.length - 1;
+        while (low < high){
+            int sumToFind = task02[low] + task02[high];
+            if (sumToFind == targetSum) {
+                System.out.println(task02[low]);
+                System.out.println(task02[high]);
+                break;
+            }
+            if (sumToFind > targetSum) high--;
+            else low++;
+        }
     }
 }
