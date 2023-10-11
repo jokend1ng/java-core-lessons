@@ -67,7 +67,12 @@ public class StringsLesson {
             System.out.println(upperString.replace("A", "!") +
                     lowerString.repeat(2));
         }
-
+        /*
+        String str = null;
+        if (str != null) {
+            System.out.println(str.toLowerCase());
+        }
+        */
         // массивы из строк
         string01 = "java junior developer";
         String[] strings = string01.split(" ");
@@ -87,12 +92,17 @@ public class StringsLesson {
         concat = "Hello" + " " + "World";
         // метод concat
         concat = string01.concat(" ").concat(string02);
+
         // StringBuilder или StringBuffer (использовать для конкатенации в цикле)
         StringBuilder sb = new StringBuilder();
         sb.append(string01).append(" ").append(string02).append("!!!");
         concat = sb.toString();
         System.out.println(concat);
-        String reversed = sb.reverse().delete(0, 3).insert(1, "???").toString();
+
+        String reversed = sb.reverse()
+                .delete(0, 3)
+                .insert(1, "???")
+                .toString();
         System.out.println(reversed);
 
         String[][] matrix01 = new String[3][3];
@@ -109,13 +119,14 @@ public class StringsLesson {
 
         // форматирование строк
         String item = "Книга";
-        int count = 1;
+        int count = 0;
         double rating = 5.5;
-        String formattedString = MessageFormat.format("Товар: {0}. На складе: {1}шт. Рейтинг: {2}.",
+        String formattedString =
+        MessageFormat.format("Товар: {0}. На складе: {1}шт. Рейтинг: {2}.",
                 item, count, rating);
         System.out.println(formattedString);
 
-        MessageFormat messageFormat = new MessageFormat("Товар: {0}. На складе: {1, choice, 0#товар отсутствует|0<мало|5<много}. Рейтинг: {2}.", Locale.UK);
+        MessageFormat messageFormat = new MessageFormat("Т: {0}. Кол: {1, choice, 0#товар отсутствует|0<мало|5<много}. Р: {2}.", Locale.UK);
         formattedString = messageFormat.format(new Object[]{item, count, rating});
         System.out.println(formattedString);
 
@@ -123,17 +134,35 @@ public class StringsLesson {
         // {index}
         // {index, type}
         // {index, type, style}
-        // number	integer, currency, percent, custom format - class DecimalFormat
-        // date	short, medium, long, full, custom format - class SimpleDateFormat
-        // time	short, medium, long, full, custom format - class SimpleDateFormat
-        // choice	custom format - class ChoiceFormat
-
-        StringBuilder stringBuilder = new StringBuilder();
-        Formatter formatter = new Formatter(stringBuilder);
+        // number:	integer, currency, percent, custom format - class DecimalFormat
+        // date:	short, medium, long, full, custom format - class SimpleDateFormat
+        // time:	short, medium, long, full, custom format - class SimpleDateFormat
+        // choice:	custom format - class ChoiceFormat
 
         int number = 1;
         boolean answer = true;
         double value = 5.77233;
+        formattedString = String.format("%d) Верный ответ: %B", number, answer);
+        System.out.println(formattedString);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter formatter = new Formatter(stringBuilder);
+
+        formattedString = formatter.format("%d) Верный ответ: %B", number, answer).toString();
+        System.out.println(formattedString);
+        stringBuilder.setLength(0);
+
+        formattedString = formatter.format("%1$d) Верный ответ: %2$b", number, answer).toString();
+        System.out.println(formattedString);
+        stringBuilder.setLength(0);
+
+        formattedString = String.format("%d) Верный ответ: %B", number, answer);
+        System.out.println(formattedString);
+        stringBuilder.setLength(0);
+
+        formattedString = formatter.format("%1$d) Верный ответ: %2$.1f", number, value).toString();
+        System.out.println(formattedString);
+        stringBuilder.setLength(0);
         // %[argument_index$][flags][width][.precision]conversion
         // % и conversion являются обязательными
         // conversion указывает на то, как должен быть отформатирован аргумент.
@@ -150,17 +179,6 @@ public class StringsLesson {
         // width — положительное целое число, минимальное количество символов, которое должно быть записано в вывод.
         // precision - целое число, используется для ограничения количества символов.
         // Количество цифр после запятой для float и double
-        formattedString = formatter.format("%d) Верный ответ: %B", number, answer).toString();
-        System.out.println(formattedString);
-        stringBuilder.setLength(0);
-
-        formattedString = formatter.format("%1$d) Верный ответ: %2$b", number, answer).toString();
-        System.out.println(formattedString);
-        stringBuilder.setLength(0);
-
-        formattedString = formatter.format("%1$d) Верный ответ: %2$.1f", number, value).toString();
-        System.out.println(formattedString);
-        stringBuilder.setLength(0);
 
     }
 }
