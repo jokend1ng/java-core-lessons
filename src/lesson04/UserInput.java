@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 public class UserInput {
     public static void main(String[] args) {
-        // I. Пользовательский ввод (Scanner)
+        // I. РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ (Scanner)
 
-        // Необходим импорт: import java.util.Scanner;
+        // РќРµРѕР±С…РѕРґРёРј РёРјРїРѕСЂС‚: import java.util.Scanner;
         Scanner scanner = new Scanner(System.in);
 
-        /*System.out.println("Введите целое число");
+        /*System.out.println("Р’РІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ");
         int intValue = scanner.nextInt(); // 34.6 34htj
 
-        System.out.println("Введите целое число (в диапазоне byte)");
+        System.out.println("Р’РІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ (РІ РґРёР°РїР°Р·РѕРЅРµ byte)");
         byte byteValue = scanner.nextByte(); // 345
 
-        System.out.println("Введите число с плавающей точкой");
+        System.out.println("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ СЃ РїР»Р°РІР°СЋС‰РµР№ С‚РѕС‡РєРѕР№");
         double doubleValue = scanner.nextDouble();
 
-        System.out.println("Введите логическое значение");
+        System.out.println("Р’РІРµРґРёС‚Рµ Р»РѕРіРёС‡РµСЃРєРѕРµ Р·РЅР°С‡РµРЅРёРµ");
         boolean booleanValue = scanner.nextBoolean();
 
         System.out.println(intValue);
@@ -27,27 +27,27 @@ public class UserInput {
         System.out.println(booleanValue);*/
 
 
-        // При вводе неверного типа,
-        // программа выбросит исключение java.util.InputMismatchException
+        // РџСЂРё РІРІРѕРґРµ РЅРµРІРµСЂРЅРѕРіРѕ С‚РёРїР°,
+        // РїСЂРѕРіСЂР°РјРјР° РІС‹Р±СЂРѕСЃРёС‚ РёСЃРєР»СЋС‡РµРЅРёРµ java.util.InputMismatchException
 
-        // Можно проверить на тип, чтобы избежать исключения
-        System.out.println("Введите целое число");
+        // РњРѕР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ РЅР° С‚РёРї, С‡С‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РёСЃРєР»СЋС‡РµРЅРёСЏ
+        System.out.println("Р’РІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ");
         if (scanner.hasNextInt()) {
             int userNumber = scanner.nextInt();
             userNumber *= userNumber;
-            System.out.println("Ваше число в квадрате: " + userNumber);
+            System.out.println("Р’Р°С€Рµ С‡РёСЃР»Рѕ РІ РєРІР°РґСЂР°С‚Рµ: " + userNumber);
         } else {
-            System.out.println("Вы ввели не целое число");
-            // считываем неверный ввод, чтобы данные не попали в следующее считывание
+            System.out.println("Р’С‹ РІРІРµР»Рё РЅРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ");
+            // СЃС‡РёС‚С‹РІР°РµРј РЅРµРІРµСЂРЅС‹Р№ РІРІРѕРґ, С‡С‚РѕР±С‹ РґР°РЅРЅС‹Рµ РЅРµ РїРѕРїР°Р»Рё РІ СЃР»РµРґСѓСЋС‰РµРµ СЃС‡РёС‚С‹РІР°РЅРёРµ
             scanner.next();
         }
 
-        System.out.println("Введите целое число еще раз");
+        System.out.println("Р’РІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ РµС‰Рµ СЂР°Р·");
         int number = scanner.nextInt();
         System.out.println(number);
 
-        System.out.println("Введите любые данные");
-        var input = scanner.next(); // строка (тип String)
+        System.out.println("Р’РІРµРґРёС‚Рµ Р»СЋР±С‹Рµ РґР°РЅРЅС‹Рµ");
+        var input = scanner.next(); // СЃС‚СЂРѕРєР° (С‚РёРї String)
         System.out.println(input);
 
     }
