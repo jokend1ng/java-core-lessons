@@ -4,15 +4,14 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Formatter;
 import java.util.Locale;
-import java.util.Scanner;
 
 public class StringsLesson {
     public static void main(String[] args) {
-        // char (примитивный тип данных) 16 бит - символ Unicode
-        char char01 = 'J'; // сам символ в одинарных кавычках
-        // но "J" - строка, ссылочный тип String
-        char char02 = 74; // номер символа в таблице Unicode в диапазоне от 0 до 65535
-        char char03 = '\u0044'; // 16ричное представление в escape последовательности
+        // char (РїСЂРёРјРёС‚РёРІРЅС‹Р№ С‚РёРї РґР°РЅРЅС‹С…) 16 Р±РёС‚ - СЃРёРјРІРѕР» Unicode
+        char char01 = 'J'; // СЃР°Рј СЃРёРјРІРѕР» РІ РѕРґРёРЅР°СЂРЅС‹С… РєР°РІС‹С‡РєР°С…
+        // РЅРѕ "J" - СЃС‚СЂРѕРєР°, СЃСЃС‹Р»РѕС‡РЅС‹Р№ С‚РёРї String
+        char char02 = 74; // РЅРѕРјРµСЂ СЃРёРјРІРѕР»Р° РІ С‚Р°Р±Р»РёС†Рµ Unicode РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ 0 РґРѕ 65535
+        char char03 = '\u0044'; // 16СЂРёС‡РЅРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РІ escape РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
 
         System.out.print(char01);
         System.out.print(char02);
@@ -21,33 +20,33 @@ public class StringsLesson {
         System.out.println('\uD83D');
         System.out.println('\uDC3E');
 
-        System.out.println("\uD83D\uDC3E"); // суррогатная пара ?
+        System.out.println("\uD83D\uDC3E"); // СЃСѓСЂСЂРѕРіР°С‚РЅР°СЏ РїР°СЂР° ?
 
-        // каждый символ юникода может быть представлен одним char или парой (суррогатная пара) char
+        // РєР°Р¶РґС‹Р№ СЃРёРјРІРѕР» СЋРЅРёРєРѕРґР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСЂРµРґСЃС‚Р°РІР»РµРЅ РѕРґРЅРёРј char РёР»Рё РїР°СЂРѕР№ (СЃСѓСЂСЂРѕРіР°С‚РЅР°СЏ РїР°СЂР°) char
 
         String string01 = "Cat";
         String string02 = "Cat";
         String string03 = new String("Cat");
 
-        // Сравнение ссылок
+        // РЎСЂР°РІРЅРµРЅРёРµ СЃСЃС‹Р»РѕРє
         System.out.println(string01 == string02); // true
         System.out.println(string01 == string03); // false
 
-        // сравнение строк
-        string01 = "Строка";
-        string02 = "строка";
-        if (string01.equals(string02)) System.out.println("Строки равны");
-        if (string01.equalsIgnoreCase(string02)) System.out.println("Строки равны без учета регистра");
+        // СЃСЂР°РІРЅРµРЅРёРµ СЃС‚СЂРѕРє
+        string01 = "РЎС‚СЂРѕРєР°";
+        string02 = "СЃС‚СЂРѕРєР°";
+        if (string01.equals(string02)) System.out.println("РЎС‚СЂРѕРєРё СЂР°РІРЅС‹");
+        if (string01.equalsIgnoreCase(string02)) System.out.println("РЎС‚СЂРѕРєРё СЂР°РІРЅС‹ Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°");
 
-        if (string01.compareTo(string02) < 0) { // или compareToIgnoreCase - без учета регистра
-            System.out.println(string01 + " меньше " + string02);
-        } else if (string01.compareTo(string02) > 0) { // или compareToIgnoreCase - без учета регистра"
-            System.out.println(string01 + " больше " + string02);
+        if (string01.compareTo(string02) < 0) { // РёР»Рё compareToIgnoreCase - Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°
+            System.out.println(string01 + " РјРµРЅСЊС€Рµ " + string02);
+        } else if (string01.compareTo(string02) > 0) { // РёР»Рё compareToIgnoreCase - Р±РµР· СѓС‡РµС‚Р° СЂРµРіРёСЃС‚СЂР°"
+            System.out.println(string01 + " Р±РѕР»СЊС€Рµ " + string02);
         } else {
-            System.out.println("Строки равны");
+            System.out.println("РЎС‚СЂРѕРєРё СЂР°РІРЅС‹");
         }
 
-        // верхний и нижний регистр
+        // РІРµСЂС…РЅРёР№ Рё РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ
         string01 = " JaVa ";
         string02 = " deVEloPEr ";
         String upperString = string01.toUpperCase();
@@ -56,9 +55,9 @@ public class StringsLesson {
         System.out.println(lowerString);
 
 
-        // удаление пробелов с начала и конца строки
-        // проверка на последовательность символов в начале и конце строки
-        // замена символов
+        // СѓРґР°Р»РµРЅРёРµ РїСЂРѕР±РµР»РѕРІ СЃ РЅР°С‡Р°Р»Р° Рё РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
+        // РїСЂРѕРІРµСЂРєР° РЅР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ СЃРёРјРІРѕР»РѕРІ РІ РЅР°С‡Р°Р»Рµ Рё РєРѕРЅС†Рµ СЃС‚СЂРѕРєРё
+        // Р·Р°РјРµРЅР° СЃРёРјРІРѕР»РѕРІ
         // string01.startsWith();
         // "str".startsWith();
         // upperString.strip().startsWith()
@@ -73,7 +72,7 @@ public class StringsLesson {
             System.out.println(str.toLowerCase());
         }
         */
-        // массивы из строк
+        // РјР°СЃСЃРёРІС‹ РёР· СЃС‚СЂРѕРє
         string01 = "java junior developer";
         String[] strings = string01.split(" ");
         System.out.println(Arrays.toString(strings));
@@ -81,19 +80,19 @@ public class StringsLesson {
         char[] chars = string01.toCharArray();
         System.out.println(Arrays.toString(chars));
 
-        // длина строки
+        // РґР»РёРЅР° СЃС‚СЂРѕРєРё
         System.out.println(string01.length());
 
-        // конкатенация строк
+        // РєРѕРЅРєР°С‚РµРЅР°С†РёСЏ СЃС‚СЂРѕРє
         string01 = "Hello";
         string02 = "World";
-        // оператор +
+        // РѕРїРµСЂР°С‚РѕСЂ +
         String concat = string01 + " " + string02;
         concat = "Hello" + " " + "World";
-        // метод concat
+        // РјРµС‚РѕРґ concat
         concat = string01.concat(" ").concat(string02);
 
-        // StringBuilder или StringBuffer (использовать для конкатенации в цикле)
+        // StringBuilder РёР»Рё StringBuffer (РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР»СЏ РєРѕРЅРєР°С‚РµРЅР°С†РёРё РІ С†РёРєР»Рµ)
         StringBuilder sb = new StringBuilder();
         sb.append(string01).append(" ").append(string02).append("!!!");
         concat = sb.toString();
@@ -117,16 +116,16 @@ public class StringsLesson {
         animals[1] = new String[3]; // [[null, null], [null, null, null], null]
         animals[2] = new String[4]; // [[null, null], [null, null, null], [null, null, null, null]]
 
-        // форматирование строк
-        String item = "Книга";
+        // С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ СЃС‚СЂРѕРє
+        String item = "РљРЅРёРіР°";
         int count = 0;
         double rating = 5.5;
         String formattedString =
-        MessageFormat.format("Товар: {0}. На складе: {1}шт. Рейтинг: {2}.",
+        MessageFormat.format("РўРѕРІР°СЂ: {0}. РќР° СЃРєР»Р°РґРµ: {1}С€С‚. Р РµР№С‚РёРЅРі: {2}.",
                 item, count, rating);
         System.out.println(formattedString);
 
-        MessageFormat messageFormat = new MessageFormat("Т: {0}. Кол: {1, choice, 0#товар отсутствует|0<мало|5<много}. Р: {2}.", Locale.UK);
+        MessageFormat messageFormat = new MessageFormat("Рў: {0}. РљРѕР»: {1, choice, 0#С‚РѕРІР°СЂ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚|0<РјР°Р»Рѕ|5<РјРЅРѕРіРѕ}. Р : {2}.", Locale.UK);
         formattedString = messageFormat.format(new Object[]{item, count, rating});
         System.out.println(formattedString);
 
@@ -142,43 +141,43 @@ public class StringsLesson {
         int number = 1;
         boolean answer = true;
         double value = 5.77233;
-        formattedString = String.format("%d) Верный ответ: %B", number, answer);
+        formattedString = String.format("%d) Р’РµСЂРЅС‹Р№ РѕС‚РІРµС‚: %B", number, answer);
         System.out.println(formattedString);
 
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
 
-        formattedString = formatter.format("%d) Верный ответ: %B", number, answer).toString();
+        formattedString = formatter.format("%d) Р’РµСЂРЅС‹Р№ РѕС‚РІРµС‚: %B", number, answer).toString();
         System.out.println(formattedString);
         stringBuilder.setLength(0);
 
-        formattedString = formatter.format("%1$d) Верный ответ: %2$b", number, answer).toString();
+        formattedString = formatter.format("%1$d) Р’РµСЂРЅС‹Р№ РѕС‚РІРµС‚: %2$b", number, answer).toString();
         System.out.println(formattedString);
         stringBuilder.setLength(0);
 
-        formattedString = String.format("%d) Верный ответ: %B", number, answer);
+        formattedString = String.format("%d) Р’РµСЂРЅС‹Р№ РѕС‚РІРµС‚: %B", number, answer);
         System.out.println(formattedString);
         stringBuilder.setLength(0);
 
-        formattedString = formatter.format("%1$d) Верный ответ: %2$.1f", number, value).toString();
+        formattedString = formatter.format("%1$d) Р’РµСЂРЅС‹Р№ РѕС‚РІРµС‚: %2$.1f", number, value).toString();
         System.out.println(formattedString);
         stringBuilder.setLength(0);
         // %[argument_index$][flags][width][.precision]conversion
-        // % и conversion являются обязательными
-        // conversion указывает на то, как должен быть отформатирован аргумент.
-        // b или B – для логических значений
-        // s или S — для строк (String)
-        // c или C - для символов
-        // d - для десятичного числа
-        // o - для восьмеричного числа
-        // x или X - для шестнадцатеричного числа
-        // f - для чисел с плавающей точкой
-        // t или T - дата и время
-        // argument_index$ - целое число, аргумент из списка
-        // flags - набор символов, используемых для изменения формата вывода.
-        // width — положительное целое число, минимальное количество символов, которое должно быть записано в вывод.
-        // precision - целое число, используется для ограничения количества символов.
-        // Количество цифр после запятой для float и double
+        // % Рё conversion СЏРІР»СЏСЋС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹РјРё
+        // conversion СѓРєР°Р·С‹РІР°РµС‚ РЅР° С‚Рѕ, РєР°Рє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅ Р°СЂРіСѓРјРµРЅС‚.
+        // b РёР»Рё B вЂ“ РґР»СЏ Р»РѕРіРёС‡РµСЃРєРёС… Р·РЅР°С‡РµРЅРёР№
+        // s РёР»Рё S вЂ” РґР»СЏ СЃС‚СЂРѕРє (String)
+        // c РёР»Рё C - РґР»СЏ СЃРёРјРІРѕР»РѕРІ
+        // d - РґР»СЏ РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+        // o - РґР»СЏ РІРѕСЃСЊРјРµСЂРёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+        // x РёР»Рё X - РґР»СЏ С€РµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+        // f - РґР»СЏ С‡РёСЃРµР» СЃ РїР»Р°РІР°СЋС‰РµР№ С‚РѕС‡РєРѕР№
+        // t РёР»Рё T - РґР°С‚Р° Рё РІСЂРµРјСЏ
+        // argument_index$ - С†РµР»РѕРµ С‡РёСЃР»Рѕ, Р°СЂРіСѓРјРµРЅС‚ РёР· СЃРїРёСЃРєР°
+        // flags - РЅР°Р±РѕСЂ СЃРёРјРІРѕР»РѕРІ, РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ С„РѕСЂРјР°С‚Р° РІС‹РІРѕРґР°.
+        // width вЂ” РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ, РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°РїРёСЃР°РЅРѕ РІ РІС‹РІРѕРґ.
+        // precision - С†РµР»РѕРµ С‡РёСЃР»Рѕ, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° СЃРёРјРІРѕР»РѕРІ.
+        // РљРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№ РґР»СЏ float Рё double
 
     }
 }
