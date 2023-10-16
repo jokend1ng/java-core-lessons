@@ -1,5 +1,7 @@
 package com.company.project.lesson07;
 
+import java.util.Arrays;
+
 // com.company.project.lesson07.Book
 public class Book {
     // модификатор private - свойство, конструктор, метод доступны только в текущем классе
@@ -7,12 +9,19 @@ public class Book {
     private boolean isPublished; // // значение по умолчанию false (для типа boolean)
     // хранит ссылки на нескольких авторов
     private Author[] authors;
+    private int count;
 
     // ПКМ -> Generate -> Constructor
     // numberOfAuthors - размер массива authors
     // значение numberOfAuthors должно находиться в диапазоне [1, 5)
     public Book(String name, int numberOfAuthors) {
-        setName(name); // вызов метода внутри класса
+        if (numberOfAuthors>=1&numberOfAuthors<5) {
+            authors = new Author[numberOfAuthors];
+            setName(name);
+        }else{
+            throw new ArrayIndexOutOfBoundsException("Не может быть столько авторов");
+        }
+         // вызов метода внутри класса
     }
     // ПКМ -> Generate -> Setter
     public void setName(String name){ // Setter
@@ -31,7 +40,9 @@ public class Book {
 
     // метод добавления нового автора в массив authors
     public void addAddAuthor(Author author){
-        // author не может быть null ссылкой
-        // новые авторы не должны перезаписывать уже существующих в массиве
+        if (count >=1&&count<5&author!=null&!Arrays.asList(authors).contains(author)){
+            authors[count]=author;
+            count ++;
+        }
     }
 }
