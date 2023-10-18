@@ -24,7 +24,8 @@ public class Train extends Vehicle{
     }
 
     // переопределение метода родителя
-    @Override // аннотация времени компиляции
+    // можно изменить только модификатор доступа на расширение
+    @Override // аннотация времени компиляции сообщит об ошибке переопределения
     public void repair(){
         if (carCount < 7 && carCount > 0) {
             if (levelOfWare >= 2) levelOfWare -= 2;
@@ -33,5 +34,11 @@ public class Train extends Vehicle{
             super.repair();
             //if (levelOfWare > 0) levelOfWare--;
         }
+    }
+
+    @Override
+    public void breakDown() {
+        this.incLevelOfWare(2);
+        if (carCount > 0) carCount -= 1;
     }
 }

@@ -1,6 +1,10 @@
 package com.company.project.lesson08;
 // Транспортное средство
-public class Vehicle {
+// нельзя создать экземпляр абстрактного класса (вызвать конструктор)
+// можно использовать в качестве общего типа при объявлении переменных
+// могут содержать абстрактные методы (без реализации)
+// абстрактные методы должны быть реализованы в неабстрактных наследниках
+public abstract class Vehicle {
     protected String number; // null
     protected int levelOfWare; // 0
     protected int maxSpeed = 120; // 120
@@ -36,4 +40,7 @@ public class Vehicle {
     public void repair(){
         if (levelOfWare > 0) levelOfWare--;
     }
+
+    // абстрактные методы - методы без реализации
+    public abstract void breakDown();
 }
