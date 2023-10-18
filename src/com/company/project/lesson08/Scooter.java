@@ -3,8 +3,8 @@ package com.company.project.lesson08;
 public class Scooter extends Bicycle{
     protected boolean isElectric;
 
-    public Scooter(String number, int maxSpeed, boolean isElectric) {
-        super(number, maxSpeed);
+    public Scooter(int maxSpeed, boolean isElectric) {
+        super("2", maxSpeed);
         this.isElectric = isElectric;
     }
 
