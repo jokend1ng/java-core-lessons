@@ -1,24 +1,22 @@
 package com.company.project.lesson08;
 
-import java.util.Arrays;
+import java.util.Random;
 
 public class RepairShop {
     // в массив можно добавить тип Vehicle и все его подтипы
-    private Vehicle[] vehicles = new Vehicle[4]; // null
+    private Vehicle[] vehicles;
+    private int count;
+    private String[] colors = {"красный", "жёлтый", "оранжевый", "чёрный"};
+    public void addToVehicles(Vehicle vehicle){
+        vehicles[count]=vehicle;
+        count++;
+    }
 
-    // изменить цвет
-    // восстановить цвет (установить дефолтный)
-    // Машина, Самокат
-    // перекрашивать все транспортные средства,
-    // у которых есть соответствующий функционал
     public void repairAll(){
-
-        // [car, scooter, train, null]
         for (Vehicle vehicle : vehicles) {
             // для вызова доступны только методы супертипа, т.е. Vehicle
             // но будет использована реализация конкретного подтипа
             vehicle.repair();
-
             // оператор instanceof вернет true,
             // если экземпляр (слева) принадлежит указанному справа типу
             /*if (vehicle instanceof Train) {
@@ -30,6 +28,16 @@ public class RepairShop {
             if (vehicle instanceof Train train) {
                 train.changeClimateControl();
             }
+            Random random =new Random();
+            if (vehicle instanceof Car car){
+                car.setColor(colors[random.nextInt(colors.length)]);
+                for(int i=0;i<vehicles.length;i++) {
+                    if(vehicles[i] == car) {
+                        vehicles[i]=null;
+                    }
+                }
+            }
         }
     }
 }
+
