@@ -1,12 +1,16 @@
 package com.company.project.lesson08;
 
-public class Scooter extends Bicycle{
+import com.company.project.lesson08.task.Colorable;
+
+public class Scooter extends Bicycle implements Colorable {
     protected boolean isElectric;
+    private String color;
 
     public Scooter(int maxSpeed, boolean isElectric) {
         super("2", maxSpeed);
         this.isElectric = isElectric;
     }
+
 
     @Override
     public void repair() {
@@ -24,5 +28,15 @@ public class Scooter extends Bicycle{
             }
 
         }
+    }
+
+    @Override
+    public void setColor(String color) {
+        this.color=color;
+    }
+
+    @Override
+    public void setDefaultColor() {
+        this.color=super.getColor();
     }
 }

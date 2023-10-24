@@ -1,7 +1,7 @@
 package com.company.project.lesson11;
 
 public class Article {
-    private Country country; // null
+    private Country country;
 
     public Article(Country country) {
         this.country = country;

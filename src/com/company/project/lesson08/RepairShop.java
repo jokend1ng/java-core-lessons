@@ -1,11 +1,15 @@
 package com.company.project.lesson08;
 
+import com.company.project.lesson08.task.Colorable;
+
 import java.util.Random;
 
-public class RepairShop {
+public class RepairShop  {
+   private Colorable colorable;
     // в массив можно добавить тип Vehicle и все его подтипы
     private Vehicle[] vehicles;
     private int count;
+    private String defaultColor ="white";
     private String[] colors = {"красный", "жёлтый", "оранжевый", "чёрный"};
     public void addToVehicles(Vehicle vehicle){
         vehicles[count]=vehicle;
@@ -39,5 +43,12 @@ public class RepairShop {
             }
         }
     }
+    public void changeColor(String color){
+        colorable.setColor(color);
+    }
+    public void changeByDefault(){
+        colorable.setDefaultColor();    }
+
+
 }
 

@@ -35,7 +35,7 @@ public class Bicycle extends Vehicle{
         return type;
     }
 
-    @Override
+
     public void breakDown() {
         this.incLevelOfWare(10);
     }
