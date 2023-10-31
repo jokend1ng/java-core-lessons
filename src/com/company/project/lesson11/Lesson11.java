@@ -20,11 +20,11 @@ public class Lesson11 {
         System.out.println(france.name());
         System.out.println(france/*.toString()*/);
 
-        Country.ITALY.setName("Италия");
-        Country.FRANCE.setName("Франция");
-        System.out.println(france.getName());
-        france.sout();
-        Country.ITALY.sout();
+//        Country.ITALY.setName("Италия");
+//        Country.FRANCE.setName("Франция");
+//        System.out.println(france.getName());
+//        france.sout();
+//        Country.ITALY.sout();
 
 
     }
