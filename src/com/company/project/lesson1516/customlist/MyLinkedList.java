@@ -1,4 +1,4 @@
-package com.company.project.lesson1516;
+package com.company.project.lesson1516.customlist;
 
 // двунапрвленный или однонаправленный связный список
 public class MyLinkedList<T> {

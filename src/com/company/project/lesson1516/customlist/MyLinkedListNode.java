@@ -1,4 +1,4 @@
-package com.company.project.lesson1516;
+package com.company.project.lesson1516.customlist;
 
 class MyLinkedListNode<T> {
     // значение, которые добавляется в связный список
