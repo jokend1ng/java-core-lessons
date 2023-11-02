@@ -8,6 +8,12 @@ class MyLinkedListNode<T> {
     // ссылка на предыдущую ноду (узел), если список двунаправленный
     private MyLinkedListNode<T> previousNode;
 
+    public MyLinkedListNode(MyLinkedListNode<T> previousNode,T value, MyLinkedListNode<T> nextNode) {
+        this.value = value;
+        this.nextNode = nextNode;
+        this.previousNode = previousNode;
+    }
+
     public MyLinkedListNode(T value) {
         this.value = value;
     }
@@ -26,5 +32,9 @@ class MyLinkedListNode<T> {
 
     public void setPreviousNode(MyLinkedListNode<T> previousNode) {
         this.previousNode = previousNode;
+    }
+
+    public T getValue() {
+        return value;
     }
 }
