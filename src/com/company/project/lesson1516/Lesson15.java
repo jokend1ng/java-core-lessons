@@ -73,8 +73,17 @@ public class Lesson15 {
         // ArrayList<Vehicle> vehicles = new ArrayList<>();
         // for (Vehicle vehicle : vehicles) {}
 
+     ArrayList<String> vehicles = new ArrayList<>();
+     vehicles.add(1,"vehicle");
+     vehicles.add(1,"vehicle1");
+    Comparator comporator = new Comparator<>() {
+        @Override
+        public int compare(Object o1, Object o2) {
+            return 0;
+        }
 
 
+    };
 
 
 

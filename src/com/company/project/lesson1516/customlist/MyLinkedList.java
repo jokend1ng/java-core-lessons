@@ -36,9 +36,9 @@ public class MyLinkedList<T> {
 
             return;
         }
-        var nodeNext = (MyLinkedListNode<T>) get(index);
+        var nodeNext =  getNode(index);
         var nodePrev = nodeNext.getPreviousNode();
-        var newNode = new MyLinkedListNode(nodePrev, t, nodeNext);
+        var newNode = new MyLinkedListNode<>(nodePrev, t, nodeNext);
         nodeNext.setPreviousNode(newNode);
         if (nodePrev != null) {
             nodePrev.setNextNode(newNode);
@@ -74,7 +74,7 @@ public class MyLinkedList<T> {
     // удаление элемента из списка по индексу
     // возвращает удалённый, если он был удалён и null, если нет
     public T remove(int index) {
-        MyLinkedListNode<T> node = (MyLinkedListNode<T>) get(index);
+        var node =  getNode(index);
         var nodeNext = node.getNextNode();
         var nodePrev = node.getPreviousNode();
         if (nodeNext != null) {
@@ -88,7 +88,7 @@ public class MyLinkedList<T> {
             first = nodeNext;
         }
         size--;
-        return (T) node;
+        return node.getValue();
     }
 
 
@@ -99,7 +99,14 @@ public class MyLinkedList<T> {
         for (int i = 0; i < index; i++) {
             node = node.getNextNode();
         }
-        return (T) node;
+        return node.getValue();
+    }
+    private MyLinkedListNode <T> getNode(int index) {
+        MyLinkedListNode<T> node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.getNextNode();
+        }
+        return node;
     }
 
     // метод, позволяющий развернуть список
@@ -108,12 +115,11 @@ public class MyLinkedList<T> {
         MyLinkedListNode<T> node = last;
 
 
-        for (int i = size ; i > 0; i--) {
+        for (int i = size - 1; i > 0; i--) {
          if (node.getNextNode()==null){
             MyLinkedListNode<T>next =node.getPreviousNode();
             node.setPreviousNode(null);
             node.setNextNode(next);
-            first =node;
 
          }else if(node.getPreviousNode()==null){
              MyLinkedListNode<T>prev =node.getNextNode();
