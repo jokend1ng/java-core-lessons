@@ -10,9 +10,9 @@ public class Lesson18 {
     private String string = "String";
     private static String staticString = "Static String";
 
-    public void accessFromLambda(String argString) {
-        String localString = "Local String";
-        Fruit localFruit = new Fruit(Fruit.FruitType.APRICOT, 300, 4);
+    public void accessFromLambda(/*final*/ String argString) {
+        /*final*/ String localString = "Local String";
+        /*final*/ Fruit localFruit = new Fruit(Fruit.FruitType.APRICOT, 300, 4);
 
         BinaryOperator<?> access = (first, second) -> {
             // в лямбда выражениях есть доступ к свойствам (static и non-static) для чтения и записи
@@ -26,7 +26,7 @@ public class Lesson18 {
             staticString = "Новая строка";
             // argString = "Новая строка";
             // localString = "Новая строка";
-            // fruit = new Fruit(Fruit.FruitType.APPLE, 120, 2);
+            // localFruit = new Fruit(Fruit.FruitType.APPLE, 120, 2);
             localFruit.setCount(localFruit.getCount() + 10);
 
             // затенение свойств
@@ -38,6 +38,7 @@ public class Lesson18 {
     }
 
     public static void main(String[] args) {
+
         /*
          Лямбда синтаксис позволяет
          создать класс, реализующий функциональный интерфейс и
@@ -71,7 +72,10 @@ TODO:    String str = object.abstractMethod("lambda", "java 8");
 
         Можно объявить любое количество реализаций
 TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() + ": " + str02.toLowerCase();
-        InterfaceName<String> object02 = (str01, str02) -> str01.length() + "-" + str02.length();
+        InterfaceName<Integer> object02 = (int01, int02) -> {
+            if (int01 > 0) return int01 + int02;
+            return int01 - int02;
+        };
         */
 
         /*
@@ -105,6 +109,31 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
          Consumer<T> + void accept(T t);
          и т.д
          */
+
+//        double first = 90.0;
+//        double second = 40.0;
+//        first + second;
+
+        // Operation: double action(double a, double b);
+        Operation plus = (first, second) -> first + second;
+        System.out.println(plus.action(45, 90));
+
+        /*
+        public class Plus implements Operation {
+
+            @Override
+            public double action(double first, double second) {
+                return first + second;
+            }
+        }
+        Operation plus = new Plus();
+        plus.action(45, 90);
+        */
+
+        // Написать реализации для:
+        // 1. умножения
+        // 2. вычитания
+        // 3. деления
 
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(875, -78, 12, 56, 34, -89, 0, 344));
 
