@@ -4,15 +4,20 @@ import com.company.project.lesson1516.task.fruits.Fruit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.function.BinaryOperator;
+import java.util.function.Predicate;
 
 public class Lesson18 {
+
     private String string = "String";
     private static String staticString = "Static String";
 
     public void accessFromLambda(/*final*/ String argString) {
-        /*final*/ String localString = "Local String";
-        /*final*/ Fruit localFruit = new Fruit(Fruit.FruitType.APRICOT, 300, 4);
+        /*final*/
+        String localString = "Local String";
+        /*final*/
+        Fruit localFruit = new Fruit(Fruit.FruitType.APRICOT, 300, 4);
 
         BinaryOperator<?> access = (first, second) -> {
             // в лямбда выражениях есть доступ к свойствам (static и non-static) для чтения и записи
@@ -148,13 +153,35 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
         System.out.println(minus.action(34.6, 90));
         System.out.println(div.action(34.6, 90));
 
+        Operation min = (a, b) -> a < b ? a : b;
 
-
+        // объекты, созданные через лямбда, можно передавать в методы,
+        // как любые другие экземпляры
+        printOperationResult(min, 12.3, 9.9);
+        printOperationResult((a, b) -> a > b ? a : b, 12.3, 9.9);
 
 
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(875, -78, 12, 56, 34, -89, 0, 344));
+        // Predicate<T>: boolean test(T t)
+        Predicate<Integer> negative = elem -> elem < 0;
+        integers.removeIf(negative);
 
-        ArrayList<String> files = new ArrayList<>(Arrays.asList("01.txt", "02.json", "03.txt", "04.txt", "05.properties"));
+        Predicate<Integer> equals1000 = integer -> integer == 1000;
+        integers.removeIf(equals1000);
+        // или без переменной:
+        integers.removeIf(integer -> integer == 1000);
+
+        /*
+         Iterator<Integer> iterator = integers.iterator();
+         while (iterator.hasNext()){
+             if (negative.test(iterator.next())) iterator.remove();
+         }
+        */
+
+        ArrayList<String> files = new ArrayList<>(Arrays.asList("01.txt", "01.bin", "02.json", "03.txt", "04.txt", "05.properties"));
+        // оставить в списке только названия с расширениями json и properties
+        // использовать метод removeIf
+        files.removeIf(string -> !(string.endsWith(".json") || string.endsWith(".properties")));
 
         ArrayList<Fruit> fruits = new ArrayList<>();
         fruits.add(new Fruit(Fruit.FruitType.APPLE, 120, 5));
@@ -164,18 +191,22 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
         fruits.add(new Fruit(Fruit.FruitType.PEAR, 180, 2));
         fruits.add(new Fruit(Fruit.FruitType.PEAR, 180, 8));
         fruits.add(new Fruit(Fruit.FruitType.BANANA, 130, 8));
+        // удалить из списка только фрукты с типом BANANA дешевле 100
+        // использовать метод removeIf
+        fruits.removeIf(fruit -> fruit.getType() == Fruit.FruitType.BANANA &&
+                fruit.getPrice() < 100);
 
-        /*
-         удалить из коллекции files строки,
-         которые заканчиваются на .json и .properties
-        */
+        // Consumer<T>: void accept(T t);
+        // 1. вывести в консоль стоимость фруктов с типами BANANA и APPLE
+        fruits.forEach(fruit -> {
+            if (fruit.getType() == Fruit.FruitType.BANANA ||
+                    fruit.getType() == Fruit.FruitType.APPLE) {
+                System.out.println(fruit.getPrice());
+            }
+        });
+        // 2. увеличить стоимость каждого фрукта в 2 раза
+        fruits.forEach(line -> line.setPrice(line.getPrice() * 2));
 
-        /*
-         удалить из коллекции fruits фрукты
-         с типом BANANA, которые дешевле 100
-        */
-
-        // увеличить стоимость каждого фрукта в 2 раза методом foreach
 
         /*
          Учитывая, что Comparator - функциональный интерфейс,
@@ -187,9 +218,26 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
         /*
          Реализовать static метод, который принимает ArrayList fruits
          и Predicate filter, содержащий условие фильтрации.
-         Метод возвращает список фруктов, которые прошли проверку переданным filter.
+         Метод возвращает список фруктов,
+         которые прошли проверку переданным filter.
          (метод должен работать с фруктами и их подтипами)
          */
+        Predicate<Fruit> filter = fruit -> fruit.getPrice() > 100;
+        filter.test(new Fruit(Fruit.FruitType.BANANA, 233, 10));
 
+    }
+
+    // Predicate<T> boolean test(T t)
+    private static <T extends Fruit> ArrayList<T> fruitsByFilter(ArrayList<T> fruits, Predicate<? super T> filter){
+        ArrayList<T> fruitArrayList = new ArrayList<>();
+        for (T fruit : fruits) {
+            if (filter.test(fruit)) fruitArrayList.add(fruit);
+        }
+        return fruitArrayList;
+    }
+
+
+    private static void printOperationResult(Operation operation, double a, double b) {
+        System.out.println(operation.action(a, b));
     }
 }
