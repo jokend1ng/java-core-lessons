@@ -116,7 +116,8 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
 
         // Operation: double action(double a, double b);
         Operation plus = (first, second) -> first + second;
-        System.out.println(plus.action(45, 90));
+        System.out.println(plus);
+        System.out.println(plus.action(34.6, 90));
 
         /*
         public class Plus implements Operation {
@@ -132,8 +133,24 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
 
         // Написать реализации для:
         // 1. умножения
+        Operation sub = (first, second) -> first * second;
+
         // 2. вычитания
+        Operation minus = (first, second) -> first - second;
+
         // 3. деления
+        Operation div = (first, second) -> {
+            if (second == 0) throw new IllegalArgumentException("second не должен быть 0");
+            return first / second;
+        };
+
+        System.out.println(sub.action(34.6, 90));
+        System.out.println(minus.action(34.6, 90));
+        System.out.println(div.action(34.6, 90));
+
+
+
+
 
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(875, -78, 12, 56, 34, -89, 0, 344));
 
