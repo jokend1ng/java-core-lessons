@@ -33,6 +33,10 @@ public class Fruit {
         APPLE, PEAR, BANANA, APRICOT;
     }
 
+    public FruitType getType() {
+        return type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
