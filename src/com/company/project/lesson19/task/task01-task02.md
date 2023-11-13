@@ -5,17 +5,16 @@
 4. в чём разница между методами `map` и `mapToInt`?
 
 ## Задание 2 
-Дан список транспортных средств
+Дан список машин
 
 
-        List<Vehicle> vehicles = List.of(
+        List<Car> vehicles = List.of(
             new Car(Repaintable.Color.GOLD, "001"),
-            new Train("002", 10, true),
-            new MiniCar(Repaintable.Color.ORANGE, "003"),
-            new Bus("004"),
-            new Train("005", 15, false),
-            new Car(Repaintable.Color.BLACK, "006"),
-            new MiniCar(Repaintable.Color.ORANGE, "007")
+            new MiniCar(Repaintable.Color.ORANGE, "002"),
+            new MiniCar(Repaintable.Color.BLACK, "003"),
+            new Car(Repaintable.Color.RED, "004"),
+            new Car(Repaintable.Color.BLACK, "005"),
+            new MiniCar(Repaintable.Color.ORANGE, "006")
         );
 
 ### Задание 2.1
