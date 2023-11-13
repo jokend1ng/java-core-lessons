@@ -37,7 +37,7 @@ public class Article {
         return title;
     }
 
-    enum Category {
+    public enum Category {
         FOOD, TRAVELLING, SHOPPING, HISTORY
     }
 }
