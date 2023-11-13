@@ -39,4 +39,9 @@ public class Scooter extends Bicycle implements Colorable {
     public void setDefaultColor() {
         this.color=super.getColor();
     }
+
+    @Override
+    public String getColor() {
+        return color;
+    }
 }

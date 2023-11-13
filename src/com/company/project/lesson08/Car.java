@@ -4,7 +4,11 @@ import com.company.project.lesson08.task.Colorable;
 
 public class Car extends Vehicle implements Colorable {
 
-    
+
+    @Override
+    public String getColor() {
+        return super.getColor();
+    }
 
     public Car(String number) {
         super("1");
@@ -23,4 +27,5 @@ public class Car extends Vehicle implements Colorable {
         this.color =super.getColor();
 
     }
+
 }
