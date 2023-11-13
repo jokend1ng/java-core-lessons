@@ -6,7 +6,8 @@ import java.util.*;
 public class Task03 {
     public static void main(String[] args) {
         // Написать реализацию методов task01 - task04
-        // Для некоторых решений могут пригодиться методы flatMap / flatMapToInt / map / mapToInt класса Stream
+        // Перед выполнением посмотрите методы flatMap / flatMapToInt / map / mapToInt / allMatch / anyMatch / noneMatch
+        // Некоторые из этих методов могут понадобиться при решении задач
     }
 
     public static Double task01(ArrayList<Article> articles){
