@@ -21,17 +21,20 @@ public class Task2 {
         return result;
     }
 
-    public Map<String,List<Colorable>> getColoredCar(List<Colorable> vehicles, Map<String, List<Colorable>> map) {
+    public void getColoredCar(List<Colorable> vehicles, Map<String, List<Colorable>> map) {
         for (Colorable vehicle : vehicles) {
             if (map.isEmpty()) {
                 map.put(vehicle.getColor(), new ArrayList<>());
                 map.get(vehicle.getColor()).add(vehicle);
-            } else {
+            } else if (map.containsKey(vehicle.getColor())) {
+                map.get(vehicle.getColor()).add(vehicle);
+            }else{
+                map.put(vehicle.getColor(), new ArrayList<>());
                 map.get(vehicle.getColor()).add(vehicle);
             }
 
         }
-        return map;
+
     }
         public List<Vehicle> getRepaireddCar (List < Vehicle > vehicles) {
             List<Vehicle> result = new ArrayList<>();
