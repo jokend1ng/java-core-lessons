@@ -33,11 +33,11 @@ public class Task2 {
         }
         return map;
     }
-        public Map<String, Vehicle> getRepaireddCar (List < Vehicle > vehicles) {
-            Map<String, Vehicle> result = new HashMap<>();
+        public List<Vehicle> getRepaireddCar (List < Vehicle > vehicles) {
+            List<Vehicle> result = new ArrayList<>();
             for (Vehicle vehicle : vehicles) {
                 vehicle.repair();
-                result.put(vehicle.getNumber(), vehicle);
+                result.add(vehicle);
             }
             return result;
         }

@@ -15,5 +15,7 @@ public interface Repaintable {
         public String getName() {
             return name;
         }
+
     }
+
 }

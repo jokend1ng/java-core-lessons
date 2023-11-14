@@ -7,74 +7,46 @@ import java.util.*;
 public class Algoritms {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void  main(String[] args) throws IOException {
+        var br =new BufferedReader(new InputStreamReader(System.in));
 
-        int range = 10;
+        String line = br.readLine();
+        int n = Integer.parseInt(br.readLine());
+        int x_=257;
+        long[] h = new long[line.length()+1];
+        long x [] = new long[line.length()+1];
+        int p=(int)Math.pow(10,9)+7;
+        x[0]=1;
+        line="_"+line;
 
-        try (var br = new BufferedReader(new InputStreamReader(System.in));
-             var bw = new BufferedWriter(new OutputStreamWriter(System.out));) {
-            var line = br.readLine();
-            List<String> data = new ArrayList<>();
-
-            int n = Integer.parseInt(line);
-            for (int i = 0; i < n; i++) {
-                data.add(br.readLine());
-
-            }
-
-
-            PrintWriter w = new PrintWriter(System.out);
-
-            w.println("Initial array:");
-            for(int i = 0; i < data.size(); i++) {
-                if (i == data.size()-1) {
-                    w.println(data.get(i));
-                } else {
-                    w.print(data.get(i) + ", ");
-                }
-            }
+       for (int i = 1; i < line.length(); i++) {
+           h[i] = (h[i-1]*x_+(line.charAt(i)))%p;
+           x[i]=(x[i-1]*x_)%p;
+       }
+       PrintWriter w = new PrintWriter(System.out);
+        w.println();
+       for (int i = 0;i<n;i++) {
+           String line1 = br.readLine();
 
 
-            for (int i = 0; i < data.get(0).length(); i++) {
-                w.print("**********\n");
-                w.print("Phase " + (i + 1) + "\n");
+           int[] array= Arrays.stream(line1.split(" ")).mapToInt(Integer::parseInt).toArray();
+           array[1] += 1;
+           array[2] += 1;
 
-                List<List<String>> buckets = new ArrayList<>();
-                for (int j = 0; j < range; j++) {
-                    buckets.add(new ArrayList<>());
-                }
-
-                for (String x : data) {
-                 String h=new StringBuilder(x).reverse().toString();
-                    int q= h.charAt(i)-'0';
-                    buckets.get(q).add(x);
-                }
-
-                data.clear();
-                for (int j = 0; j < range; j++) {
-                    data.addAll(buckets.get(j));
-                    w.print("Bucket " + j + ": ");
-                    if (buckets.get(j).isEmpty()) {
-                        w.print("empty\n");
-                    } else {
-                        w.print(String.join(", ", buckets.get(j)) + "\n");
-                    }
-                }
-            }
-
-            w.print("**********\n");
-            w.print("Sorted array:\n");
-            w.print(String.join(", ", data));
-
+           if((h[array[1]+array[0]-1]+h[array[2]+1])*x[array[0]]%p==
+                   (h[array[2]+array[0]-1]+h[array[1]+1])*x[array[0]]%p){
+               w.println("yes");
+           } else{
+               w.println("no");
+           }
             w.flush();
-            w.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       }
+       w.close();
+    }
 
 
     }
-}
+
 
 
 

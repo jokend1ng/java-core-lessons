@@ -5,6 +5,7 @@ public interface Operation {
     double action(double a, double b);
 
     default Operation addOperation(Operation other){
-        return (first, second) -> action(first, second) + other.action(first, second);
+        return(a,b)->action(a,b)+other.action(a,b);
     }
+
 }

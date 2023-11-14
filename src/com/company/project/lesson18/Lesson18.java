@@ -4,7 +4,6 @@ import com.company.project.lesson1516.task.fruits.Fruit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
@@ -160,13 +159,10 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
         // как любые другие экземпляры
         printOperationResult(min, 12.3, 9.9);
         printOperationResult((a, b) -> a > b ? a : b, 12.3, 9.9);
-
-        Operation operation = plus
-                .addOperation(minus)
+        Operation operation = plus.addOperation(minus)
                 .addOperation(div)
                 .addOperation(sub);
-
-        System.out.println(operation.action(12.4, 5.7));
+        System.out.println(operation.action(12.4,5.7));
 
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(875, -78, 12, 56, 34, -89, 0, 344));
         // Predicate<T>: boolean test(T t)
@@ -200,14 +196,8 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
         fruits.add(new Fruit(Fruit.FruitType.BANANA, 130, 8));
         // удалить из списка только фрукты с типом BANANA дешевле 100
         // использовать метод removeIf
-        // interface Predicate
-        // public boolean removeIf(Predicate filter)
-        // boolean test(T t);
-        Predicate<Fruit> byType = fruit -> fruit.getType() == Fruit.FruitType.BANANA;
-        Predicate<Fruit> byPrice = fruit -> fruit.getPrice() < 100;
-        Predicate<Fruit> filter = byType.and(byPrice);
-        fruits.removeIf(filter);
-
+        fruits.removeIf(fruit -> fruit.getType() == Fruit.FruitType.BANANA &&
+                fruit.getPrice() < 100);
 
         // Consumer<T>: void accept(T t);
         // 1. вывести в консоль стоимость фруктов с типами BANANA и APPLE
@@ -222,42 +212,22 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
 
 
         /*
-         Реализовать static метод, который принимает ArrayList fruits
-         и Predicate filter, содержащий условие фильтрации.
-         Метод возвращает список фруктов,
-         которые прошли проверку переданным filter.
-         (метод должен работать с фруктами и их подтипами)
-         */
-        Predicate<Fruit> filter01 = fruit -> fruit.getPrice() > 100;
-        filter01.test(new Fruit(Fruit.FruitType.BANANA, 233, 10));
-
-
-
-
-         /*
          Учитывая, что Comparator - функциональный интерфейс,
          отсортировать список фруктов:
          1. по цене
          2. по цене и количеству
         */
 
-        Comparator<Fruit> compareByPrice = (a, b) -> (int) (a.getPrice() - b.getPrice());
-        Comparator<Fruit> compareByCount = (f1, f2) -> f2.getCount() - f1.getCount();
-        Comparator<Fruit> compareByType = (f1, f2) -> f1.getType().ordinal() - f2.getType().ordinal();
-        fruits.sort(compareByPrice);
-        fruits.sort(compareByPrice.thenComparing(compareByCount));
+        /*
+         Реализовать static метод, который принимает ArrayList fruits
+         и Predicate filter, содержащий условие фильтрации.
+         Метод возвращает список фруктов,
+         которые прошли проверку переданным filter.
+         (метод должен работать с фруктами и их подтипами)
+         */
+        Predicate<Fruit> filter = fruit -> fruit.getPrice() > 100;
+        filter.test(new Fruit(Fruit.FruitType.BANANA, 233, 10));
 
-
-        // Interface: Notification
-        // абстрактный метод send(User user);
-        // default Notification additionalSend(Notification notification, Predicate predicate)
-
-
-        // Interface: IPay
-        // абстрактный boolean pay();
-        // default метод IPay additionalPay(IPay pay)
-        // альтернативный способ используется,
-        // если предыдущий не сработал
     }
 
     // Predicate<T> boolean test(T t)
@@ -270,7 +240,7 @@ TODO:   InterfaceName<String> object01 = (str01, str02) -> str01.toUpperCase() +
     }
 
 
-    public static void printOperationResult(Operation operation, double a, double b) {
+    private static void printOperationResult(Operation operation, double a, double b) {
         System.out.println(operation.action(a, b));
     }
 }
