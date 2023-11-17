@@ -2,6 +2,7 @@ package com.company.project.lesson20.task;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Task01 {
     public static void main(String[] args) {
@@ -20,6 +21,7 @@ public class Task01 {
                 new Student(12, "Ирина", Student.Gender.FEMALE, LocalDate.now().minusYears(6))
         ));
 
+
         // Используя методы Stream API:
         //  1. Разделить учеников на две группы: мальчиков и девочек. Результат: Map<Student.Gender, ArrayList<Student>>
 
@@ -29,9 +31,25 @@ public class Task01 {
 
         //  5. Собрать учеников в группы по году рождения, результат - Map<Integer, List<Student>>
 
-        //  6. Отсортировать по полу, дате рождения, имени (в обратном порядке), собрать в список (ArrayList)
+        //  6. Отсортировать по полу, дате рождения, имени (в обратном порядке),
+        //  собрать в список (ArrayList)
 
-        // 7. Собрать в список всех учеников с именем == someName
+        Comparator<Student> byGender = (s1, s2) -> s1.getGender().ordinal() - s2.getGender().ordinal();
+        Comparator<Student> byBirth = (s1, s2) -> s1.getBirth().compareTo(s2.getBirth());
+        Comparator<Student> studentComparator = byGender.thenComparing(byBirth);
+        // Function<? super T, ? extends U> keyExtractor
+        // R apply(T value);
+        studentComparator = Comparator.<Student>comparingInt(student->student.getGender().ordinal())
+                // .thenComparing(Comparator.comparing(student -> student.getBirth()))
+                .thenComparing(student -> student.getBirth())
+                .thenComparing(student -> student.getName()).reversed();
+        ArrayList<Student> studentArrayList = students.stream()
+                .sorted(studentComparator)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+
+        // 7. Собрать в список всех учеников с именем
+        String someName = "Петр";
 
         //  8. Собрать Map<Student.Gender, Integer>,
         //  где Student.Gender - пол,
