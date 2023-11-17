@@ -1,6 +1,10 @@
 package com.company.project.lesson19.task.task03;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.*;
+import java.util.function.Predicate;
 
 
 public class Task03 {
@@ -10,22 +14,49 @@ public class Task03 {
         // Некоторые из этих методов могут понадобиться при решении задач
     }
 
-    public static Double task01(ArrayList<Article> articles){
+
+
+    public static Double task01(ArrayList<Article> articles) {
         // Вернуть средний возраст авторов статей
-        return null;
+        return articles.stream()
+                .flatMapToInt(article -> article.getAuthors().values().stream()
+                        .mapToInt(author -> {
+                            LocalDate current = LocalDate.now();
+                            LocalDate authorBirth = author.getBirth();
+                            return Period.between(authorBirth, current).getYears();
+                        })
+                )
+                .average().getAsDouble();
     }
 
-    public static List<String> task02(ArrayList<Article> articles, Article.Category category){
+    public static List<String> task02(ArrayList<Article> articles, Article.Category category) {
         // Вернуть список email авторов статей категории == category
-        return null;
+        return articles.stream()
+                .filter(article -> article.getCategory() == category)
+                .flatMap(article -> article.getAuthors().values().stream()
+                        .map(author -> author.getEmail()))
+                .toList();
     }
-    public static List<Article> task03(ArrayList<Article> articles, Article.Category category, int min, int max){
+
+    public static List<Article> task03(ArrayList<Article> articles, Article.Category category, int min, int max) {
         // Вернуть список статей категории == category,
         // возраст авторов которых попадает в диапазон от min до max
-        return null;
+        return articles.stream()
+                .filter(article -> article.getCategory() == category)
+                .filter(article -> article.getAuthors().values().stream()
+                        .allMatch(author -> {
+                            int age = Period.between(author.getBirth(), LocalDate.now()).getYears();
+                            return age > min && age < max;
+                        })
+                )
+                .toList();
     }
-    public static List<Article> task04(ArrayList<Article> articles, Article.Category category){
+
+    public static List<Article> task04(ArrayList<Article> articles, Article.Category category) {
         // Вернуть список статей категории == category, опубликованных сегодня
-        return null;
+        return articles.stream()
+                .filter(article -> article.getCategory() == category)
+                .filter(article -> article.getPublished().toLocalDate().isEqual(LocalDate.now()))
+                .toList();
     }
 }
