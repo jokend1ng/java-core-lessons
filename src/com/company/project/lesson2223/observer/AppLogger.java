@@ -5,4 +5,6 @@ public class AppLogger implements Listener{ // конкретная реализ
     public void execute(Connection connection) {
         System.out.println("Запись информации в файл");
     }
+
+
 }
