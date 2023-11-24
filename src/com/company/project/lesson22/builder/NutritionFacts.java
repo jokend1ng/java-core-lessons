@@ -1,33 +1,55 @@
 package com.company.project.lesson22.builder;
 
+import java.util.List;
+
 public class NutritionFacts {
-    private int calories;
+    private String number; // required
+    private int calories; // required
     private int servings;
     private int fat;
+    private String keyWords; // required
 
-    private NutritionFacts(Builder builder){
-        calories = builder.calories;
-        fat = builder.fat;
-        servings = builder.servings;
-    }
+    private NutritionFacts(){}
 
     public static class Builder {
         private int calories;
         private int servings;
         private int fat;
+        private String number;
+        private List<String> keyWords;
         public Builder(int calories) { // 120
             this.calories = calories;
         }
-        public Builder servings(int servings){ // 30
-            this.servings = servings;
+        public Builder servings(String number){
+            this.number = number;
             return this;
         }
         public Builder fat(int fat){
             this.fat = fat;
             return this;
         }
+
+        public Builder keyWords(List<String> keyWords){
+            this.keyWords = keyWords;
+            return this;
+        }
+
+        public Builder calories(int calories){
+            this.calories = calories;
+            return this;
+        }
+
         public NutritionFacts build(){
-            return new NutritionFacts(this);
+            if (number == null || calories < 1
+                    || keyWords == null || keyWords.size() == 0){
+                throw new IllegalArgumentException();
+            }
+            NutritionFacts nf = new NutritionFacts();
+            nf.calories = calories;
+            nf.servings = servings;
+            nf.fat = fat;
+            nf.keyWords = String.join(",", keyWords);
+            return nf ;
         }
     }
 }
