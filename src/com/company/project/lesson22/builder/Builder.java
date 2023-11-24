@@ -14,13 +14,14 @@ public class Builder {
         // 5. значения свойств (необязательных) по умолчанию должны устанавливаться в Builder, не в NutritionFacts
 
         // 120 - калории
-        NutritionFacts milk = new NutritionFacts.Builder(120)
+        NutritionFacts milk = new NutritionFacts.Builder("11yy")
                 .fat(10)
                 .build();
 
         // NutritionFacts meat = new NutritionFacts(300);
         // 300 - калории
-        NutritionFacts meat = new NutritionFacts.Builder(300)
+        NutritionFacts meat = new NutritionFacts.Builder("51wd")
+                .calories(300)
                 .servings(200)
                 .fat(80)
                 .build();

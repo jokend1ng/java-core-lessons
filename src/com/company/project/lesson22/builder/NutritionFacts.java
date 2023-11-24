@@ -17,8 +17,8 @@ public class NutritionFacts {
         private int fat;
         private String number;
         private List<String> keyWords;
-        public Builder(int calories) { // 120
-            this.calories = calories;
+        public Builder(String number) {
+            this.number = number;
         }
         public Builder servings(String number){
             this.number = number;
@@ -34,6 +34,11 @@ public class NutritionFacts {
             return this;
         }
 
+        public Builder servings(int servings){
+            this.servings = servings;
+            return this;
+        }
+
         public Builder calories(int calories){
             this.calories = calories;
             return this;
@@ -45,6 +50,7 @@ public class NutritionFacts {
                 throw new IllegalArgumentException();
             }
             NutritionFacts nf = new NutritionFacts();
+            nf.number = number;
             nf.calories = calories;
             nf.servings = servings;
             nf.fat = fat;
