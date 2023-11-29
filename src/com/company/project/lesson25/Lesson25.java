@@ -1,5 +1,6 @@
 package com.company.project.lesson25;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Lesson25 {
@@ -17,5 +18,38 @@ public class Lesson25 {
         trader.addItem(item02);
         trader.addItem(item03);
         trader.addItem(item04);
+
     }
+
+    public static <T> void write(T t) {
+        try (FileOutputStream fileOutput = new FileOutputStream("file.bin");
+             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput)) {
+            //try {
+            objectOutput.writeObject(t); // сериализация, запись
+            //} catch (IOException e){
+            //System.out.println("Ошибка сериализации writeObject");
+            //}
+        } catch (FileNotFoundException e) {
+            System.out.println("Ошибка создания файла");
+        } catch (IOException e) {
+            System.out.println("Ошибка сериализации writeObject / записи в файл");
+        }
+    }
+
+    public static <T> T read() {
+        try (FileInputStream fileInput = new FileInputStream("file.bin");
+             ObjectInputStream objectInput = new ObjectInputStream(fileInput)) {
+
+            return (T) objectInput.readObject(); // чтение, десериализация в Object
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (IOException e) {
+            System.out.println("Ошибка чтения");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Ошибка десериализации, нужный класс не найден");
+        }
+        return null;
+    }
+
 }
