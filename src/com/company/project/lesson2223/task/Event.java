@@ -7,6 +7,6 @@ public class Event {
         this.appLogger = appLogger;
     }
 
-    public Event() {
+    public Event(com.company.project.lesson22.task.AppLogger appLogger) {
     }
 }

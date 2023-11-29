@@ -1,11 +1,15 @@
-package com.company.project.lesson22.task;
+package com.company.project.lesson2223.task;
 
-public class Upper extends Event implements  AppLogger {
-    public Upper(AppLogger appLogger) {
+import com.company.project.lesson2223.observer.AppLogger;
+
+public class Upper extends com.company.project.lesson22.task.Event implements com.company.project.lesson22.task.AppLogger {
+
+    public Upper(com.company.project.lesson22.task.AppLogger appLogger) {
         super(appLogger);
     }
 
     public Upper() {
+        super(appLogger);
     }
 
     @Override
