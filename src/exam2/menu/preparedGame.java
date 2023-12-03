@@ -27,10 +27,13 @@ public class preparedGame {
         }
     }
     public static void smallMenu() throws IOException {
+
         System.out.println("Сделайте выбор: ");
         switch (sc.nextInt()) {
-            case 1-> smallMenu.smallChoose1();
-            case 2-> smallMenu.smallChoose2();
+            case 1-> {smallMenu.smallChoose1();
+                menu.resumeGame();}
+            case 2-> {smallMenu.smallChoose2();
+                menu.resumeGame();}
             case 3-> menu.MainMenu();
             default -> System.out.println("не правильно набран номер");
         }

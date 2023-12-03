@@ -13,8 +13,8 @@ import java.util.Map;
 
 public abstract class MenuTask implements Read, Write, Command {
     static List<String> vozvrat = new ArrayList<>();
-    Repository repository = new Repository();
-    Map<String, Sequence> list = repository.initialMap();
+
+     Map<String, Sequence> list = new Repository().initialMap();
 
 
     void start() throws IOException {
@@ -68,7 +68,7 @@ public abstract class MenuTask implements Read, Write, Command {
     void getWord(String s){
         String[] linesB;
         String B;
-        linesB = list.get(s).getWayB().split("->");
+        linesB = s.split("->");
         if (linesB.length > 1) {
             B = linesB[1];
         } else {
