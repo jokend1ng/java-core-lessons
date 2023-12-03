@@ -2,11 +2,13 @@ package exam2.repositiry;
 
 import exam2.models.Sequence;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class repository {
-    public static Map<String,Sequence> initialMap() {
+public class Repository {
+
+    public  Map<String,Sequence> initialMap() {
         Map<String, Sequence> igra = new HashMap<>();
         Sequence Lisenok = new Sequence("Лисенок", "Каждое утро Лисёнок просыпался, завтракал и шёл увидеться с Бельчонком. Это утро не было исключением. Лисёнок пришёл на\n" +
                 "их обычное место встречи, но Бельчонка там не было. Лисёнок ждал, ждал, но так и не смог дождаться своего друга. \"\n" +
