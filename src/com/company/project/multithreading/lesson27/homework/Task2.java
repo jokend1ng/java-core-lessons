@@ -2,9 +2,10 @@ package com.company.project.multithreading.lesson27.homework;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Task2 extends Thread {
@@ -52,10 +53,15 @@ public class Task2 extends Thread {
             arrayList.addAll(t2.getItems());
             arrayList.addAll(t3.getItems());
             arrayList.addAll(t4.getItems());
-            Map<String,Item> items = arrayList.stream()
-                  .collect(Collectors.toMap(Item::getName,item->item));
+
+            Map<String,List<Item>> items = arrayList.stream()
+                  .collect(Collectors.groupingBy(Item::getName,Collectors.mapping(Item::getSort,Collectors.toList())));// нашел такое но не понимаю как оно работает
         });
 
 
     }
+
+
+
+
 }

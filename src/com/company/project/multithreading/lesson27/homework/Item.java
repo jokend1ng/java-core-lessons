@@ -44,4 +44,7 @@ public class Item {
     public void setHowmany(int howmany) {
         this.howmany = howmany;
     }
+    public double getSort(Item other){
+        return this.getHowmany()*this.getPrice()- other.getHowmany()* other.getPrice();
+    }
 }
