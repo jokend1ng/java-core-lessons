@@ -39,16 +39,39 @@ public class Task2 extends Thread {
     }
 
     public static void main(String[] args) {
-        Thread thread =new Thread(()-> {
+
             Task2 t1 = new Task2("test");
             Task2 t2 = new Task2("test");
             Task2 t3 = new Task2("test");
             Task2 t4 = new Task2("test");
+
             t1.start();
+            try {
+                t1.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             t2.start();
+            try {
+                t2.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             t3.start();
+            try {
+                t3.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             t4.start();
+            try {
+                t4.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
             List<Item>arrayList = new ArrayList<Item>();
+
             arrayList.addAll(t1.getItems());
             arrayList.addAll(t2.getItems());
             arrayList.addAll(t3.getItems());
@@ -64,4 +87,3 @@ public class Task2 extends Thread {
 
 
 
-}
